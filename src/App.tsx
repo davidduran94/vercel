@@ -8,16 +8,6 @@ function App() {
   const [count, setCount] = useState(0)
   const [email, setEmail] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email.trim()) {
-      setMessage('¡Gracias por tu registro!')
-      setEmail('')
-    } else {
-      setMessage('Por favor, introduce un correo válido')
-    }
-  }
-
   return (
     <>
       <section id="center">
