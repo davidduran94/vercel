@@ -7,7 +7,6 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,15 +48,6 @@ function App() {
         <form
           action="https://formsubmit.co/davidduran94@gmail.com"
           method="POST"
-          onSubmit={(e) => {
-            e.preventDefault()
-            if (email.trim()) {
-              setMessage('¡Gracias por tu registro! Revisa tu correo.')
-              setEmail('')
-            } else {
-              setMessage('Por favor, introduce un correo válido')
-            }
-          }}
         >
           <input type="hidden" name="_subject" value="Nuevo registro de newsletter" />
           <input
@@ -70,7 +60,6 @@ function App() {
           />
           <button type="submit">Suscribirse</button>
         </form>
-        {message && <p className="message">{message}</p>}
       </section>
 
       <div className="ticks"></div>
