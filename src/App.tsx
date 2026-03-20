@@ -6,6 +6,18 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email.trim()) {
+      setMessage('¡Gracias por tu registro!')
+      setEmail('')
+    } else {
+      setMessage('Por favor, introduce un correo válido')
+    }
+  }
 
   return (
     <>
@@ -27,6 +39,23 @@ function App() {
         >
           Count is {count}
         </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="newsletter">
+        <h2>Únete al newsletter</h2>
+        <p>Recibe actualizaciones y tips directo a tu inbox</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="tu@ejemplo.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="submit">Suscribirse</button>
+        </form>
+        {message && <p className="message">{message}</p>}
       </section>
 
       <div className="ticks"></div>
