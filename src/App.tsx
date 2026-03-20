@@ -46,12 +46,27 @@ function App() {
       <section id="newsletter">
         <h2>Únete al newsletter</h2>
         <p>Recibe actualizaciones y tips directo a tu inbox</p>
-        <form onSubmit={handleSubmit}>
+        <form
+          action="https://formsubmit.co/davidduran94@gmail.com"
+          method="POST"
+          onSubmit={(e) => {
+            e.preventDefault()
+            if (email.trim()) {
+              setMessage('¡Gracias por tu registro! Revisa tu correo.')
+              setEmail('')
+            } else {
+              setMessage('Por favor, introduce un correo válido')
+            }
+          }}
+        >
+          <input type="hidden" name="_subject" value="Nuevo registro de newsletter" />
           <input
             type="email"
+            name="email"
             placeholder="tu@ejemplo.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <button type="submit">Suscribirse</button>
         </form>
